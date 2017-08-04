@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dokter">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:gravity="center|bottom"
+        android:layout_alignParentBottom="true">
+        <EditText
+            android:id="@+id/fieldUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp"
+            android:hint="Enter Username"
+            android:padding="10dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/edittxt_custom"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/fieldPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fieldUser"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:hint="Enter Password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/edittxt_custom"
+            android:singleLine="true" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_custom"
+            android:text="@string/btn_login"
+            android:layout_below="@+id/fieldPass"
+            android:id="@+id/btnLogin"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="100dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/fieldUser"
+                android:hint="Username"
+                android:textSize="15sp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fieldUser"
+                android:id="@+id/fieldPass"
+                android:hint="Password"
+                android:textSize="15sp"
+                android:inputType="text"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fieldPass"
+                android:id="@+id/fieldNama"
+                android:hint="Nama Kader Posyandu"
+                android:inputType="text"
+                android:textSize="15sp"/>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fieldNama"
+                android:id="@+id/fieldJenisKelamin"
+                android:contextClickable="true"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fieldJenisKelamin"
+                android:layout_marginTop="25dp"
+                android:text="@string/btn_next"
+                android:textColor="#FFFF"
+                android:background="@drawable/btn_custom"/>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</FrameLayout>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:id="@+id/layoutOne">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data Ibu"
+                    android:textSize="20sp"
+                    android:id="@+id/titleData1"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/divider_custom"
+                    android:layout_below="@+id/titleData1"
+                    android:id="@+id/divider1"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fieldNamaIbu"
+                    android:layout_below="@+id/divider1"
+                    android:hint="Nama Ibu"
+                    android:textSize="15sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Umur Ibu"
+                    android:layout_below="@+id/fieldNamaIbu"
+                    android:id="@+id/fieldUmurIbu"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="number" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pekerjaan Ibu"
+                    android:id="@+id/fieldWorkIbu"
+                    android:layout_below="@+id/fieldUmurIbu"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="15sp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fieldWorkIbu"
+                    android:id="@+id/fieldNoHpIbu"
+                    android:hint="No Telepon Ibu"
+                    android:textSize="15sp"
+                    android:inputType="phone"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_below="@+id/layoutOne"
+                android:id="@+id/layoutTwo">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data Ayah"
+                    android:textSize="20sp"
+                    android:id="@+id/titleData2"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/divider_custom"
+                    android:layout_below="@+id/titleData2"
+                    android:id="@+id/divider2"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fieldNamaAyah"
+                    android:layout_below="@+id/divider2"
+                    android:hint="Nama Ayah"
+                    android:textSize="15sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Umur Ayah"
+                    android:layout_below="@+id/fieldNamaAyah"
+                    android:id="@+id/fieldUmurAyah"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="number" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pekerjaan Ayah"
+                    android:id="@+id/fieldWorkAyah"
+                    android:layout_below="@+id/fieldUmurAyah"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="15sp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fieldWorkAyah"
+                    android:id="@+id/fieldNoHpAyah"
+                    android:hint="No Telepon Ayah"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="15sp"
+                    android:inputType="phone"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_below="@+id/layoutTwo"
+                android:id="@+id/layoutThree">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data Balita"
+                    android:textSize="20sp"
+                    android:id="@+id/titleData3"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/divider_custom"
+                    android:layout_below="@+id/titleData3"
+                    android:id="@+id/divider3"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fieldNamaAnak"
+                    android:layout_below="@+id/divider3"
+                    android:hint="Nama Anak"
+                    android:textSize="15sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Umur Anak"
+                    android:layout_below="@+id/fieldNamaAnak"
+                    android:id="@+id/fieldUmurAnak"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="number" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fieldUmurAnak"
+                    android:id="@+id/fieldJenisKelamin"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fieldJenisKelamin"
+                    android:id="@+id/btn_form"
+                    android:text="Submit"
+                    android:textColor="#FFFF"
+                    android:background="@drawable/btn_custom"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
