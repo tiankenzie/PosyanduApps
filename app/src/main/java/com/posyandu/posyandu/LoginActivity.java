@@ -2,95 +2,142 @@ package com.posyandu.posyandu;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatTextView;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * Created by Prabowo on 7/8/2017.
  */
-public class LoginActivity extends AppCompatActivity {
-    Firebase loginRef;
-    String vUsername, vPassword, fPassword;
-    JSONObject jsonObject;
-    TextView title;
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+    private final AppCompatActivity activity = LoginActivity.this;
+
+    private NestedScrollView nestedScrollView;
+
+    private TextInputLayout textInputLayoutEmail;
+    private TextInputLayout textInputLayoutPassword;
+
+    private TextInputEditText textInputEditTextEmail;
+    private TextInputEditText textInputEditTextPassword;
+
+    private AppCompatButton appCompatButtonLogin;
+
+    private AppCompatTextView textViewLinkRegister;
+
+    private InputValidation inputValidation;
+    private DataBaseHelper databaseHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_login);
+        getSupportActionBar().hide();
 
-        Button login = (Button) this.findViewById(R.id.btnLogin);
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-        });
+        initViews();
+        initListeners();
+        initObjects();
+    }
+
+    /**
+     * This method is to initialize views
+     */
+    private void initViews() {
+
+        nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
+
+        textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
+        textInputLayoutPassword = (TextInputLayout) findViewById(R.id.textInputLayoutPassword);
+
+        textInputEditTextEmail = (TextInputEditText) findViewById(R.id.textInputEditTextEmail);
+        textInputEditTextPassword = (TextInputEditText) findViewById(R.id.textInputEditTextPassword);
+
+        appCompatButtonLogin = (AppCompatButton) findViewById(R.id.appCompatButtonLogin);
+
+        textViewLinkRegister = (AppCompatTextView) findViewById(R.id.textViewLinkRegister);
 
     }
 
-    public boolean login(){
-        EditText iUsername = (EditText) this.findViewById(R.id.fieldUser);
-        final EditText iPassword = (EditText) this.findViewById(R.id.fieldPass);
-        vUsername = iUsername.getText().toString();
-        vPassword = iPassword.getText().toString();
-        if(vUsername.equals("")){
-            Toast.makeText(this, "please input username", Toast.LENGTH_SHORT).show();
-            iUsername.requestFocus();
-            return false;
-        }
-        if (vPassword.equals("")){
-            Toast.makeText(this, "Please input password", Toast.LENGTH_SHORT).show();
-            iPassword.requestFocus();
-            return false;
-        }
-        Firebase.setAndroidContext(this);
-        loginRef = new Firebase("https://yukpesan.firebaseio.com/users/");
-        loginRef.child(vUsername).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue() == null) {
-                    Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
-                }else{
-                    String jsonString = dataSnapshot.getValue().toString();
-                    try {
-                        jsonObject = new JSONObject(jsonString);
-                        if (jsonObject != null) {
-                            fPassword = jsonObject.getString("password");
-                            if (fPassword.equals(vPassword)) {
-                                Toast.makeText(LoginActivity.this, "Login success", Toast.LENGTH_SHORT).show();
-
-                                Intent intent = new Intent(LoginActivity.this, ResultActivity.class);
-                                startActivity(intent);
-                            } else {
-                                Toast.makeText(LoginActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Toast.makeText(LoginActivity.this, "Error !", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_SHORT).show();
-            }
-        });
-        return false;
+    /**
+     * This method is to initialize listeners
+     */
+    private void initListeners() {
+        appCompatButtonLogin.setOnClickListener(this);
+        textViewLinkRegister.setOnClickListener(this);
     }
+
+    /**
+     * This method is to initialize objects to be used
+     */
+    private void initObjects() {
+        databaseHelper = new DataBaseHelper(activity);
+        inputValidation = new InputValidation(activity);
+
+    }
+
+    /**
+     * This implemented method is to listen the click on view
+     *
+     * @param v
+     */
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.appCompatButtonLogin:
+                verifyFromSQLite();
+                Intent intent = new Intent(getApplicationContext(),ResultActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.textViewLinkRegister:
+                // Navigate to RegisterActivity
+                Intent intentRegister = new Intent(getApplicationContext(), RegistrasiActivity.class);
+                startActivity(intentRegister);
+                break;
+        }
+    }
+
+    /**
+     * This method is to validate the input text fields and verify login credentials from SQLite
+     */
+    private void verifyFromSQLite() {
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextEmail(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextPassword, textInputLayoutPassword, getString(R.string.error_message_email))) {
+            return;
+        }
+
+        if (databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim()
+                , textInputEditTextPassword.getText().toString().trim())) {
+
+
+//            Intent accountsIntent = new Intent(activity, UsersListActivity.class);
+//            accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
+//            emptyInputEditText();
+//            startActivity(accountsIntent);
+
+
+        } else {
+            // Snack Bar to show success message that record is wrong
+            Snackbar.make(nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     * This method is to empty all input edit text
+     */
+    private void emptyInputEditText() {
+        textInputEditTextEmail.setText(null);
+        textInputEditTextPassword.setText(null);
+    }
+
 }
 
