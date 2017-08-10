@@ -26,6 +26,12 @@
 
         <activity android:name=".ResultActivity">
         </activity>
+
+        <activity android:name=".DataOrtuActivity">
+        </activity>
+
+        <activity android:name=".FormBaby">
+        </activity>
     </application>
 
 </manifest>

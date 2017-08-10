@@ -47,85 +47,97 @@
         <!-- 1st RelativeLayout will take up 2/3 of the parent's height -->
         <RelativeLayout
             android:layout_width="match_parent"
+            android:layout_height="0dip"
             android:layout_weight="2.5"
-            android:background="#0676ff"
-            android:layout_height="0dip">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tanggal Lahir    :"
-                    android:id="@+id/txtTTL"
-                    android:textSize="15sp"
-                    android:textColor="#FFF"
-                    android:layout_margin="10dp"
-                    />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/fieldTTL"
-                    android:layout_toRightOf="@+id/txtTTL"
-                    android:layout_margin="10dp"
-                    android:textColor="#FFF"
-                    android:text="15-08-1987"
-                    android:textSize="15sp"/>
+            android:background="#0676ff">
 
             <TextView
+                android:id="@+id/txtTTL"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pekerjaan           :"
-                android:id="@+id/txtWork"
-                android:textColor="#FFF"
-                android:textSize="15sp"
                 android:layout_margin="10dp"
-                android:layout_below="@+id/txtTTL"
-                />
+                android:text="Tanggal Lahir    :"
+                android:textColor="#FFF"
+                android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/fieldTTL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/fieldWork"
-                android:layout_toRightOf="@+id/txtWork"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@+id/txtTTL"
+                android:text="15-08-1987"
                 android:textColor="#FFF"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/txtWork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtTTL"
+                android:layout_margin="10dp"
+                android:text="Pekerjaan           :"
+                android:textColor="#FFF"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/fieldWork"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/fieldTTL"
                 android:layout_margin="10dp"
+                android:layout_toRightOf="@+id/txtWork"
                 android:text="Ibu Rumah Tangga"
-                android:textSize="15sp"/>
+                android:textColor="#FFF"
+                android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/txtNoHp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nomor Telepon :"
-                android:id="@+id/txtNoHp"
-                android:textSize="15sp"
-                android:textColor="#FFF"
-                android:layout_margin="10dp"
                 android:layout_below="@+id/txtWork"
-                />
+                android:layout_margin="10dp"
+                android:text="Nomor Telepon :"
+                android:textColor="#FFF"
+                android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/fieldNoHp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/fieldNoHp"
-                android:layout_toRightOf="@+id/txtNoHp"
                 android:layout_below="@+id/fieldWork"
                 android:layout_margin="10dp"
-                android:textColor="#FFF"
+                android:layout_toRightOf="@+id/txtNoHp"
                 android:text="087865799902"
-                android:textSize="15sp"/>
+                android:textColor="#FFF"
+                android:textSize="15sp" />
 
             <Button
+                android:id="@+id/btn_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtNoHp"
+                android:background="@drawable/edittxt_custom"
+                android:text="Add Children"
+                android:textColor="#000"
+                android:textSize="10sp"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/fieldNoHp"
+                android:layout_toRightOf="@+id/btn_edit"
+                android:layout_toEndOf="@+id/btn_edit" />
+
+            <Button
                 android:id="@+id/btn_edit"
-                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@drawable/edittxt_custom"
                 android:text="Edit"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="5dp"
-                />
+                android:textSize="10sp"
+                android:textColor="#000"
+                android:layout_below="@+id/fieldNoHp"
+                android:layout_alignLeft="@+id/fieldNoHp"
+                android:layout_alignStart="@+id/fieldNoHp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginStart="18dp" />
 
         </RelativeLayout>
 
